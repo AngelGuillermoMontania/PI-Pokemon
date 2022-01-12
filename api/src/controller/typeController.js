@@ -9,7 +9,7 @@ module.exports = {
                await axios.get('https://pokeapi.co/api/v2/type')
                     .then(data => typesApi = data)
           } catch (error) {
-               res.send(error)
+               return res.send(error)
           }
           const types = typesApi.data.results.map(elem => elem.name)
           types.forEach(elem => {
@@ -20,6 +20,18 @@ module.exports = {
                })
           });
           
-          res.send(types)
+          return res.send(types)
+     },
+     getTypes: async (req, res) => {
+          let typesApi;
+          try {
+               await axios.get('https://pokeapi.co/api/v2/type')
+                    .then(data => typesApi = data)
+          } catch (error) {
+               return res.send(error)
+          }
+          const types = typesApi.data.results.map(elem => elem.name);
+
+          return res.send(types)
      }
 }

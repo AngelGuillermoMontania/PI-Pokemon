@@ -22,6 +22,10 @@ module.exports = (sequelize) => {
     power: {
       type: DataTypes.STRING
     },
+    createInDB: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true
+    },
     defense: {
       type: DataTypes.STRING
     },
