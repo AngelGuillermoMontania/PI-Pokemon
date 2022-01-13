@@ -27,6 +27,9 @@ const Nav = () => {
                     </Link>
                     
                </form>
+               <Link to="/create">
+                              <button type="submit">crear</button>
+               </Link> 
                <Outlet />
           </div>
      )

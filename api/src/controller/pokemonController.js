@@ -12,7 +12,7 @@ module.exports = {
                               id: data.id,
                               name: data.forms[0].name,
                               img: data.sprites.front_default,
-                              types: data.types.map(elem => elem.type.name),
+                              types: data.types.map(elem => {return {name: elem.type.name}}),
                               life: data.stats[0].base_stat,
                               atack: data.stats[1].base_stat,
                               defense: data.stats[2].base_stat,
@@ -20,7 +20,7 @@ module.exports = {
                               weight: data.weight,
                               height: data.height
                          }))
-                              .catch((error) => res.send('No se encontro el pokemon indicado'))
+                         .catch((error) => res.send('No se encontro el pokemon indicado'))
           }
 
      
@@ -34,17 +34,17 @@ module.exports = {
                     ...infoFirstRequest,
                     ...infoSecondRequest
                ]
-               console.log(fullRequestApi)
                fullInfoApi = fullRequestApi.map(elem => ({
                     id: elem.data.id,
                     name: elem.data.forms[0].name,
                     img: elem.data.sprites.front_default,
+                    atack: elem.data.stats[1].base_stat,
                     types: elem.data.types.map(elem => {return {name: elem.type.name}})
                }))
           } catch (error) {
                res.send(error)
-          }
- */
+          } */
+    
 
 
 
@@ -57,7 +57,7 @@ module.exports = {
                    let auxPokemones = pokemonesApi.results.map(e => {
                        return {
                            name: e.name,
-                           url: e.url,
+                           url: e.url,                    
                        }
                    })
                    pokemones.push(...auxPokemones);
@@ -110,6 +110,7 @@ module.exports = {
                               id: elem.data.id,
                               name: elem.data.forms[0].name,
                               img: elem.data.sprites.front_default,
+                              atack: elem.data.stats[1].base_stat,
                               types: elem.data.types.map(elem => {return {name: elem.type.name}})
                          })
                     })
@@ -122,13 +123,14 @@ module.exports = {
                               id: elem.data.id,
                               name: elem.data.forms[0].name,
                               img: elem.data.sprites.front_default,
+                              atack: elem.data.stats[1].base_stat,
                               types: elem.data.types.map(elem => {return {name: elem.type.name}})
                          })
                     })
                })
                .catch(error => res.send(error))
 
-          
+               
           await Pokemon.findAll({
                include: {
                     model: Type,
@@ -159,7 +161,7 @@ module.exports = {
                               id: data.id,
                               name: data.forms[0].name,
                               img: data.sprites.front_default,
-                              types: data.types.map(elem => elem.type.name),
+                              types: data.types.map(elem => {return {name: elem.type.name}}),
                               life: data.stats[0].base_stat,
                               atack: data.stats[1].base_stat,
                               defense: data.stats[2].base_stat,

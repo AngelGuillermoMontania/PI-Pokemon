@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
-import { getPokemons, getTypes} from '../redux/actions';
+import { getPokemons, getTypes, setLoading} from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link} from 'react-router-dom';
 import Card from './card'
 
 const Home = () => {
 
       const dispatch = useDispatch();
       let state = useSelector(state => state);
-      const [pokemonReact, setPokemonReact] = React.useState({...state})
+      const [pokemonReact, setPokemonReact] = React.useState({...state});
+      const [page, setPage] = React.useState(0)
 
       React.useEffect(() => {
             dispatch(getPokemons());
@@ -19,31 +19,49 @@ const Home = () => {
             setPokemonReact({...state})
       }, [state])
 
-      const filter = (event) => {
+      React.useEffect(() => {
+            if(pokemonReact.pokemons.length > 0) {
+                  dispatch(setLoading())
+            }
+      }, [pokemonReact.pokemons, dispatch])
+
+      const filterType = (event) => {
             var prev = [];
-            if(event.target.value === 'null') {
-                  console.log(event.target.value)
-                  setPokemonReact({...state, pokemons: state.pokemons});
-            } else {
-                  state.pokemons.forEach(elem => 
+            state.pokemons.forEach(elem => 
                         elem.types.forEach(value => {
-                              if(value.name === event.target.value) {
+                              if(value.name.includes(event.target.value)) {
                                     prev.push(elem)
                               }
                         })
                   )
-                  setPokemonReact({...state, pokemons: prev});
+            setPokemonReact({...state, pokemons: prev});
+            renderCards();
+      }
+
+      const filterApiOrDb = (event) => {
+            var prev = [];
+            if(event.target.value === 'db') {
+                  pokemonReact.pokemons.forEach(elem => {
+                        if(elem.createInDB) {
+                              prev.push(elem)
+                        }
+                  })
             }
+            if(event.target.value === 'api') {
+                  pokemonReact.pokemons.forEach(elem => {
+                        if(!elem.createInDB) {
+                              prev.push(elem)
+                        }
+                  })
+            }
+            setPokemonReact({...state, pokemons: prev});
             renderCards();
       }
 
       const filterAlfab = (event) => {
-            console.log(state.pokemons)
-            if(event.target.value === 'qsy') {
-                  console.log(event.target.value)
-                  setPokemonReact({...state, pokemons: state.pokemons});
-            } if(event.target.value === 'A-Z') {
-                  let names = pokemonReact.pokemons.sort((a, b) => {
+            let pokemonsReact = [...pokemonReact.pokemons]
+            if(event.target.value === 'Z-A') {
+                  let names = pokemonsReact.sort((a, b) => {
                         if (a.name > b.name) {
                               return 1;
                         }
@@ -52,11 +70,11 @@ const Home = () => {
                         }
                         return 0;
                   })
-                  console.log(state.pokemons)
                   setPokemonReact({...state, pokemons: names});
                   
-            } if(event.target.value === 'Z-A') {
-                  let names = pokemonReact.pokemons.sort((a, b) => {
+            } 
+            if(event.target.value === 'A-Z') {
+                  let names = pokemonsReact.sort((a, b) => {
                         if (a.name < b.name) {
                               return 1;
                         }
@@ -70,51 +88,130 @@ const Home = () => {
             renderCards();
       }
 
+      const filterPower = (event) => {
+            let pokemonsReact = [...pokemonReact.pokemons]
+            if(event.target.value === 'Down') {
+                  let powers = pokemonsReact.sort((a, b) => {
+                        if (a.atack > b.atack) {
+                              console.log(a.power)
+                              return 1;
+                        }
+                        if (a.atack < b.atack) {
+                              return -1;
+                        }
+                        return 0;
+                  })
+                  setPokemonReact({...state, pokemons: powers});
+            } 
+            if(event.target.value === 'Up') {
+                  let powers = pokemonsReact.sort((a, b) => {
+                        if (a.atack < b.atack) {
+                              return 1;
+                        }
+                        if (a.atack > b.atack) {
+                              return -1;
+                        }
+                        return 0;
+                  })
+                  setPokemonReact({...state, pokemons: powers});
+            }
+            renderCards();
+      }
+      
+      const reset = () => {
+            setPokemonReact({...state})
+            renderCards() 
+      }
+      
+      /* console.log(event.target.selectedIndex) */
             
-            const renderCards = useCallback(() => {
-                  
-                              return pokemonReact.pokemons.map(elem => <Card 
-                                    key={elem.id}
-                                    id={elem.id}
-                                    img={elem.img}
-                                    name={elem.name}
-                                    types={elem.types}
-                                    />)
-                        
-                           
-            }, [pokemonReact])
 
+      const paginCards = useCallback(() => {
+            
+            const pokemonRender = pokemonReact.pokemons.slice(page,page + 12)
+            return pokemonRender
+            
+      }, [pokemonReact, page])
 
+      const next = () => {
+            setPage(page + 12)
+      }
+
+      /* const previus = () => {
+
+      } */
+
+      const renderCards = useCallback(() => {
+                        return paginCards().map(elem => <Card 
+                              id={elem.id}
+                              img={elem.img}
+                              name={elem.name}
+                              types={elem.types}
+                              power={elem.atack}
+                              />)
+      }, [paginCards])
+
+      const isLoading = useCallback(() => {
+            if(state.loading) {
+                  return (<div>
+                              <h1>Cargando...</h1>
+                        </div>)
+            }
+      }, [state.loading])
            
 
       return (
             <div>
                   <div>
                         <div>
-                              <label htmlFor="">Ordena por tipo</label>
-                              <select name="type" onChange={filter}>
-                                    <option value='null'>Selecciona</option>
-                                    {
-                                          state.types.map(elem => <option value={elem} key={elem}>{elem}</option>)
-                                    }
-                              </select>
+                              <div>
+                                    <label htmlFor="">Ordena por tipo</label>
+                                    <select name="type" onChange={filterType}>
+                                          <option>-</option>
+                                          {
+                                                state.types.map(elem => <option value={elem} key={elem}>{elem}</option>)
+                                          }
+                                    </select>
+                              </div>
+                              <div>
+                              <label htmlFor="">Creado o existente</label>
+                                    <select name="apiOrDb" onChange={filterApiOrDb}>
+                                          <option>-</option>
+                                          <option value='api'>Existente</option>
+                                          <option value='db'>Creado</option>
+                                    </select>
+                              </div>
                         </div>
                         <div>
-                              <label htmlFor="">Ordena Alfabeticamente</label>
-                              <select name="alfab" onChange={filterAlfab}>
-                                    <option value='qsy'>Selecciona</option>
-                                    <option value='A-Z'>Descendente</option>
-                                    <option value='Z-A'>Ascendente</option>
-                              </select>
+                              <div>
+                                    <label htmlFor="">Ordena Alfabeticamente</label>
+                                    <select name="alfab" onChange={filterAlfab}>
+                                          <option>-</option>
+                                          <option value='A-Z'>Descendente</option>
+                                          <option value='Z-A'>Ascendente</option>
+                                    </select>
+                              </div>
+                                    <label htmlFor="">Ordena Por Fuerza</label>
+                                    <select name="force" onChange={filterPower}>
+                                          <option>-</option>
+                                          <option value='Up'>Descendente</option>
+                                          <option value='Down'>Ascendente</option>
+                                    </select>
+                              <div>
+
+                              </div>
                         </div>
-                        <form action="">
-                              <button type="submit">♣♠♠♠♠</button>
-                        </form>
-                        <Link to="/create">
-                              <button type="submit">crear</button>
-                        </Link>  
+                        <button onClick={reset}>Reiniciar filtros</button>
+                        
                   </div>
                   <div>
+                        <button>Anterior</button>
+                        <button onClick={next}>Siguiente</button>
+                  </div>
+                  <div>
+                        {
+                              isLoading()
+                        }
                         {
                               renderCards()
                         }

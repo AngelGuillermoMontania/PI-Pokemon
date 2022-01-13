@@ -56,9 +56,10 @@ const Detail = () => {
                               <p>Peso: {state.weight}</p>
                         </div>
                         <div>
+                              <h3>Types</h3>
                         {
-                              state.types.map(type => 
-                                    <h5>{type.name}</h5>  
+                              !state.types ? '' : state.types.map(type => 
+                                    <p>{type.name}</p>  
                               )
                         }
                         </div>

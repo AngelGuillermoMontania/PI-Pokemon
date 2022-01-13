@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-const Home = ({id, img, name, types}) => {
+const Home = ({id, img, name, power, types}) => {
 
       return (
-            <div>
+            <div key={id}>
                   <Link to={`detail/${id}`}>
                         <div>
                               <h1>{name}</h1>
@@ -19,6 +19,9 @@ const Home = ({id, img, name, types}) => {
                                     )
                                     }
                               </div>
+                        </div>
+                        <div>
+                              <p>Power: {power}</p>
                         </div>
                   </Link>
             </div>
