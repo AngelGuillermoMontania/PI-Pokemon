@@ -2,16 +2,12 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { getDetail, getPokemonName } from '../redux/actions';
 import { useParams, useLocation } from 'react-router-dom';
+import Loading from './loading';
+import CardDetail from './cardDetail';
 
 function useQuery() {
       return new URLSearchParams(useLocation().search)
 }
-
-
-
-
-
-
 
 const Detail = () => {
       
@@ -20,8 +16,6 @@ const Detail = () => {
       const {id} = useParams();
       const query = useQuery()
       const name = query.get("name")
-
-      console.log(query)
 
       React.useEffect(() => {
             if(id){
@@ -36,34 +30,11 @@ const Detail = () => {
             }
       }, [dispatch, name])
      
-      return (
+      return ( 
             <div>
-                  <div>
-                        <h1>{state.name ? state.name : state}</h1>
-                  <div>
-                        <img src={state.img} alt="" />
-                  </div>
-                  <p>Id: {state.id}</p>
-                  <h3>Estadisticas</h3>
-                        <div>
-                              <p>Life: {state.life}</p>
-                              <p>Power: {state.power}</p>
-                              <p>Defense: {state.defense}</p>
-                              <p>Speed: {state.speed}</p>
-                        </div>
-                        <div>
-                              <p>Altura: {state.height}</p>
-                              <p>Peso: {state.weight}</p>
-                        </div>
-                        <div>
-                              <h3>Types</h3>
-                        {
-                              !state.types ? '' : state.types.map(type => 
-                                    <p>{type.name}</p>  
-                              )
-                        }
-                        </div>
-            </div>
+                  {
+                        !state.name? <Loading /> : <CardDetail state={state} />
+                  }
             </div>
       )
 

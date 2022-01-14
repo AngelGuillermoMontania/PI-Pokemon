@@ -1,10 +1,9 @@
-import { GET_POKEMONS, GET_DETAIL, GET_POKEMONS_NAME, CREATE_POKEMON, GET_TYPES, SET_LOADING } from '../actions/index'
+import { GET_POKEMONS, GET_DETAIL, GET_POKEMONS_NAME, CREATE_POKEMON, GET_TYPES, CLEAR_POKEMON } from '../actions/index'
 
 const initialState = {
       pokemons: [],
       pokemon: [],
-      types: [],
-      loading: true
+      types: []
   };
 
 const rootReducer = (state = initialState, action) => {
@@ -38,10 +37,10 @@ const rootReducer = (state = initialState, action) => {
                         ...state,
                         types: action.payload
                   });
-            case SET_LOADING:
+            case CLEAR_POKEMON:
                   return({
                         ...state,
-                        loading: action.payload
+                        pokemon: action.payload
                   })
             default:
                   return ({...state})

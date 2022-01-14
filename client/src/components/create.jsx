@@ -12,7 +12,7 @@ const Create = () => {
             name: '',
             life: '',
             defense: '',
-            power: '',
+            atack: '',
             speed: '',
             weight: '',
             height: '',
@@ -24,6 +24,7 @@ const Create = () => {
       }, [dispatch])
 
       const handleSubmit = (event) => {
+            console.log(newPokemon)
             dispatch(createPokemon(newPokemon));
             let newInfo = event.currentTarget;
             let div = document.createElement("div");
@@ -36,18 +37,19 @@ const Create = () => {
 
       const selectType = (event) => {
             if(event.currentTarget.checked) {
-                  return setNewPokemon({
+                  console.log(event.currentTarget.checked)
+                  console.log(event.target.value)
+                  let newType = [event.target.value]
+                  setNewPokemon({
                         ...newPokemon,
-                        type: [
-                              ...newPokemon.type,
-                              event.target.value
-                        ]
+                        type: [...newPokemon.type, ...newType]
                   })
             } else {
-                  return setNewPokemon({
+                  setNewPokemon({
                         ...newPokemon,
                         type: newPokemon.type.filter(elem => elem !== event.target.value)
                   })
+                  
             }
       }
 
@@ -108,7 +110,7 @@ const Create = () => {
                               stateRedux.map(elem => 
                                     <div>
                                           <label htmlFor="type">{elem}</label>
-                                          <input type="checkbox" name="type" id="type" value={elem} onChange={() => selectType}/>
+                                          <input type="checkbox" name="type" id="type" value={elem} onChange={selectType}/>
                                     </div>
                               )
                               }

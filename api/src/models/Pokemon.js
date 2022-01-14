@@ -19,7 +19,7 @@ module.exports = (sequelize) => {
     life: {
       type: DataTypes.STRING
     },
-    power: {
+    atack: {
       type: DataTypes.STRING
     },
     createInDB: {
