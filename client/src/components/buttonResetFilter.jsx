@@ -9,7 +9,7 @@ const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
       }
 
       return (
-                  <button onClick={reset}>Reiniciar filtros</button>
+                  <button onClick={reset}>RESET FILTERS</button>
       )
 
 }

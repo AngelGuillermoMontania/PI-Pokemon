@@ -1,16 +1,17 @@
 import React, { useCallback } from 'react';
 import { getPokemons, getTypes} from '../redux/actions';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterType, filterApiOrDb, filterAlfab, filterPower } from '../functions/filters';
+import { filterType, filterApiOrDb, filterAlphab, filterPower } from '../functions/filters';
 import Card from './card'
 import Loading from './loading'
 import ButtonPage from './buttonPage';
 import ButtonReset from './buttonResetFilter';
+import { capitalize } from '../functions/extras';
 
 const Home = () => {
 
       const dispatch = useDispatch();
-      let state = useSelector(state => state);
+      const state = useSelector(state => state);
       const [pokemonReact, setPokemonReact] = React.useState({...state});
       const [page, setPage] = React.useState(0);
       const [loading, setLoading] = React.useState(true)
@@ -41,8 +42,8 @@ const Home = () => {
                   case filterApiOrDb:
                         filterApiOrDb(event, setPokemonReact, state, renderCards)
                         break;
-                  case filterAlfab:
-                        filterAlfab(event, pokemonReact, setPokemonReact, state, renderCards)
+                  case filterAlphab:
+                        filterAlphab(event, pokemonReact, setPokemonReact, state, renderCards)
                         break;
                   case filterPower:
                         filterPower(event, pokemonReact, setPokemonReact, state, renderCards)
@@ -64,56 +65,52 @@ const Home = () => {
                               />)
       }, [pokemonReact.pokemons, page])
            
-
       return (
             <div>
                   <div>
                         <div>
-                              <label htmlFor="">Ordena por tipo</label>
+                              <label htmlFor="">Filter By Type</label>
                               <select name="type" onChange={(event) => functionsFilters(event, filterType)}>
                                     <option>-</option>
                                     {
-                                          state.types.map(elem => <option value={elem} key={elem}>{elem}</option>)
+                                          state.types.map(elem => <option value={elem} key={elem}>{capitalize(elem)}</option>)
                                     }
                               </select>
                         </div>
                         <div>
-                              <label htmlFor="">Creado o existente</label>
+                              <label htmlFor="">Created Or Existing</label>
                               <select name="apiOrDb" onChange={(event) => functionsFilters(event, filterApiOrDb)}>
                                     <option>-</option>
-                                    <option value='api'>Existente</option>
-                                    <option value='db'>Creado</option>
+                                    <option value='api'>Existing</option>
+                                    <option value='db'>Created</option>
                               </select>
                         </div>
                         <div>
-                              <label htmlFor="">Ordena Alfabeticamente</label>
-                              <select name="alfab" onChange={(event) => functionsFilters(event, filterAlfab)}>
+                              <label htmlFor="">Order Alphabetically</label>
+                              <select name="Alphab" onChange={(event) => functionsFilters(event, filterAlphab)}>
                                     <option>-</option>
-                                    <option value='A-Z'>Descendente</option>
-                                    <option value='Z-A'>Ascendente</option>
+                                    <option value='A-Z'>Descendant</option>
+                                    <option value='Z-A'>Ascendant</option>
                               </select>
                         </div>
                         <div>
-                              <label htmlFor="">Ordena Por Fuerza</label>
+                              <label htmlFor="">Order By Atack</label>
                               <select name="force" onChange={(event) => functionsFilters(event, filterPower)}>
                                     <option>-</option>
-                                    <option value='Up'>Descendente</option>
-                                    <option value='Down'>Ascendente</option>
+                                    <option value='Up'>Descendant</option>
+                                    <option value='Down'>Ascendant</option>
                               </select>
                         </div>
-                        <ButtonReset setPokemonReact={setPokemonReact} state={state} setPage={setPage} renderCards={renderCards}/>
                   </div>
+                  <ButtonReset setPokemonReact={setPokemonReact} state={state} setPage={setPage} renderCards={renderCards}/>
                   <div>
                         <ButtonPage pokemonReact={pokemonReact} page={page} setPage={setPage} />
-
                         {
                               loading && <Loading />
                         }
                         {
                               renderCards()
                         }
-                              
-                            
                   </div>
             </div>
       )

@@ -1,40 +1,39 @@
 export const filterType = (event, copyState, setCopyState, stateRedux, render) => {
       if(event.target.value !== '-') {
-            var prev = [];
+            var aux = [];
             copyState.pokemons.forEach(elem => 
                         elem.types.forEach(value => {
                               if(value.name.includes(event.target.value)) {
-                                    prev.push(elem)
+                                    aux.push(elem)
                               }
                         })
                   )
-            setCopyState({...stateRedux, pokemons: prev});
+            setCopyState({...stateRedux, pokemons: aux});
       }
       render()
 }
 
 export const filterApiOrDb = (event, setCopyState, stateRedux, render) => {
+      let aux = [];
       if(event.target.value === 'db') {
-            let prev = [];
             stateRedux.pokemons.forEach(elem => {
                   if(elem.createInDB) {
-                        prev.push(elem)
+                        aux.push(elem)
                   }
             })
-            setCopyState({...stateRedux, pokemons: prev});
+            setCopyState({...stateRedux, pokemons: aux});
       }if(event.target.value === 'api') {
-            let prev = [];
             stateRedux.pokemons.forEach(elem => {
                   if(!elem.createInDB) {
-                        prev.push(elem)
+                        aux.push(elem)
                   }
             })
-            setCopyState({...stateRedux, pokemons: prev});
+            setCopyState({...stateRedux, pokemons: aux});
       }
       render()
 }
 
-export const filterAlfab = (event, copyState, setCopyState, stateRedux, render) => {
+export const filterAlphab = (event, copyState, setCopyState, stateRedux, render) => {
       let pokemonsReact = [...copyState.pokemons]
       if(event.target.value === 'Z-A') {
             let names = pokemonsReact.sort((a, b) => {

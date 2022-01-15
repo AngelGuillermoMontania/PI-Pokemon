@@ -1,12 +1,12 @@
 const axios = require('axios')
 const { Pokemon, Type } = require('./../db.js')
-const URL_GET = "https://pokeapi.co/api/v2/pokemon";
+const URL_GET = "https://pokeapi.co/api/v2/pokemon/";
 
 module.exports = {
      indexAndName: async (req, res) => {
 
           if(req.query.name) {
-               await axios.get(`https://pokeapi.co/api/v2/pokemon/${req.query.name.toLowerCase()}`)
+               await axios.get(`${URL_GET}${req.query.name.toLowerCase()}`)
                     .then(data => data.data)
                          .then(data => res.send({
                               id: data.id,
@@ -20,11 +20,28 @@ module.exports = {
                               weight: data.weight,
                               height: data.height
                          }))
-                         .catch((error) => res.send('No se encontro el pokemon indicado'))
+                         .catch(async (error) => {
+                              try {
+                                   await Pokemon.findOne({
+                                        where: {name: req.query.name},
+                                        include: {
+                                             model: Type,
+                                             attributes: ['name'],
+                                             through: {
+                                                  attributes: [],
+                                             }
+                                        }
+                                   }).then(data => {
+                                        res.send(data)
+                                   })   
+                              } catch (error) {
+                                   res.send('The indicated pokemon does not exist. strict search')
+                              } 
+                         })
           } else {
 
                
-                    
+               /* .all 1x1 */
                          /* let fullInfoApi = []
                          try {
                               const firstRequest = await axios.get(URL_GET);
@@ -45,15 +62,13 @@ module.exports = {
                          } catch (error) {
                               res.send(error)
                          } */
-                   
                
                
-               
+               /* .all x40 */
                          /* try {
-                              let url = 'https://pokeapi.co/api/v2/pokemon/';
                               let pokemones = [];
                               do {
-                                  let info = await axios.get(url);
+                                  let info = await axios.get(URL_GET);
                                   let pokemonesApi = info.data;
                                   let auxPokemones = pokemonesApi.results.map(e => {
                                       return {
@@ -85,106 +100,123 @@ module.exports = {
                        console.log(pokesWithData); 
                        res.send(pokesWithData);
                     } catch (e) {
-                       console.log(e);
+                       res.send(e));
                     } */
                
-               
-               
-               
-               
-               
-               
-                         let fullInfoApi = []
-                         let firstRequest
-                         let secondRequest
-               
-                         await axios(URL_GET)
-                              .then(data => firstRequest = data.data)
-                              .catch(error => res.send(error))
-                         await axios(firstRequest.next)
-                              .then(data => secondRequest = data.data)
-                              .catch(error => res.send(error))
-                         await Promise.all(firstRequest.results.map(elem => axios(elem.url)))
-                              .then(data => {
-                                   data.forEach(elem => {
-                                        fullInfoApi.push({
-                                             id: elem.data.id,
-                                             name: elem.data.forms[0].name,
-                                             img: elem.data.sprites.other.home.front_default,
-                                             atack: elem.data.stats[1].base_stat,
-                                             types: elem.data.types.map(elem => {return {name: elem.type.name}})
-                                        })
-                                   })
+
+
+
+                    /* .all 20x2 */
+
+               let fullInfoApi = []
+               let firstRequest
+               let secondRequest
+     
+               await axios(URL_GET)
+                    .then(data => firstRequest = data.data)
+                    .catch(error => res.send(error))
+               await axios(firstRequest.next)
+                    .then(data => secondRequest = data.data)
+                    .catch(error => res.send(error))
+               await Promise.all(firstRequest.results.map(elem => axios(elem.url)))
+                    .then(data => {
+                         data.forEach(elem => {
+                              fullInfoApi.push({
+                                   id: elem.data.id,
+                                   name: elem.data.forms[0].name,
+                                   img: elem.data.sprites.other.home.front_default,
+                                   atack: elem.data.stats[1].base_stat,
+                                   types: elem.data.types.map(elem => {return {name: elem.type.name}})
                               })
-                              .catch(error => res.send(error))
-                         await Promise.all(secondRequest.results.map(elem => axios(elem.url)))
-                              .then(data => {
-                                   data.forEach(elem => {
-                                        fullInfoApi.push({
-                                             id: elem.data.id,
-                                             name: elem.data.forms[0].name,
-                                             img: elem.data.sprites.other.home.front_default,
-                                             atack: elem.data.stats[1].base_stat,
-                                             types: elem.data.types.map(elem => {return {name: elem.type.name}})
-                                        })
-                                   })
-                              })
-                              .catch(error => res.send(error))
-               
-                              
-                         await Pokemon.findAll({
-                              include: {
-                                   model: Type,
-                                   attributes: ['name'],
-                                   through: {
-                                        attributes: [],
-                                   }
-                              }
                          })
-                              .then(fullInfoDB => {
-                                   console.log(fullInfoDB)
-                                   let fullInfo = [
-                                        ...fullInfoApi,
-                                        ...fullInfoDB
-                                   ];
-                                   res.send(fullInfo)
+                    })
+                    .catch(error => res.send(error))
+               await Promise.all(secondRequest.results.map(elem => axios(elem.url)))
+                    .then(data => {
+                         data.forEach(elem => {
+                              fullInfoApi.push({
+                                   id: elem.data.id,
+                                   name: elem.data.forms[0].name,
+                                   img: elem.data.sprites.other.home.front_default,
+                                   atack: elem.data.stats[1].base_stat,
+                                   types: elem.data.types.map(elem => {return {name: elem.type.name}})
                               })
-                              .catch(error => res.send(error))
+                         })
+                    })
+                    .catch(error => res.send(error))
+     
+                    
+               await Pokemon.findAll({
+                         include: {
+                              model: Type,
+                              attributes: ['name'],
+                              through: {
+                                   attributes: [],
+                              }
+                         }
+                    })
+                    .then(fullInfoDB => {
+                         let fullInfo = [
+                              ...fullInfoApi,
+                              ...fullInfoDB
+                         ];
+                         res.send(fullInfo)
+                    })
+                    .catch(error => res.send(error))
           }
 
      },
      detail: async (req, res) => {
           let id = req.params.id
-          let detailPokemon
-
-          await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`)
-               .then(data => data.data)
-                    .then(data => {
-                         detailPokemon = {
-                              id: data.id,
-                              name: data.forms[0].name,
-                              img: data.sprites.other.home.front_default,
-                              types: data.types.map(elem => {return {name: elem.type.name}}),
-                              life: data.stats[0].base_stat,
-                              atack: data.stats[1].base_stat,
-                              defense: data.stats[2].base_stat,
-                              speed: data.stats[5].base_stat,
-                              weight: data.weight,
-                              height: data.height
+          if(id.length < 8) {
+               try {
+                    await axios.get(`${URL_GET}${id}`)
+                         .then(data => data.data)
+                              .then(data => {
+                                   res.send({
+                                        id: data.id,
+                                        name: data.forms[0].name,
+                                        img: data.sprites.other.home.front_default,
+                                        types: data.types.map(elem => {return {name: elem.type.name}}),
+                                        life: data.stats[0].base_stat,
+                                        atack: data.stats[1].base_stat,
+                                        defense: data.stats[2].base_stat,
+                                        speed: data.stats[5].base_stat,
+                                        weight: data.weight,
+                                        height: data.height
+                                   })
+                              });     
+               } catch (error) {
+                    res.send(error)
+               }
+          } else {
+               try {
+                    await Pokemon.findOne({
+                         where: {id: id},
+                         include: {
+                              model: Type,
+                              attributes: ['name'],
+                              through: {
+                                   attributes: [],
+                              }
                          }
-                    }).catch(error => res.send(error));
-          
-          res.send(detailPokemon)
+                    }).then(data => {
+                         res.send(data)
+                    })   
+               } catch (error) {
+                    res.send(error)
+               } 
+          }
      },
      create: async (req, res) => {
-          let { name, life, power, defense, speed, weight, height, type} = req.body;
+          let { name, life, atack, defense, speed, weight, height, type} = req.body;
           let pokemonCreate
-          
+
           try { 
                pokemonCreate = await Pokemon.create({
                     name: name.toLowerCase(),
                     life,
-                    power,
+                    atack,
                     defense,
                     speed,
                     height,

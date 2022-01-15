@@ -8,7 +8,7 @@ const ButtonPage = ({pokemonReact, page, setPage}) => {
             }
       }
       
-      const previus = () => {
+      const previous = () => {
             if(page > 0) {
                   setPage(page - 12)
             }
@@ -17,8 +17,8 @@ const ButtonPage = ({pokemonReact, page, setPage}) => {
 
      return (
             <div>
-                  <button onClick={previus}>Anterior</button>
-                  <button onClick={next}>Siguiente</button>
+                  <button onClick={previous}>Previous</button>
+                  <button onClick={next}>Next</button>
             </div>
      )
 

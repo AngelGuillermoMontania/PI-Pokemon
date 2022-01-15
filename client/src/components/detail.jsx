@@ -33,7 +33,12 @@ const Detail = () => {
       return ( 
             <div>
                   {
-                        !state.name? <Loading /> : <CardDetail state={state} />
+                        !state.name ? <Loading /> : <CardDetail state={state} />
+                  }
+                  {
+                        typeof(state) === 'string' && <div>
+                                    <h1>"The searched pokemon does not exist. Search exact with full name"</h1>
+                              </div>
                   }
             </div>
       )

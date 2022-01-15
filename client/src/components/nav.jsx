@@ -1,21 +1,20 @@
 import React from 'react'
-import {Link, Outlet} from 'react-router-dom';
-
-
-
+import {Link, Outlet, useNavigate} from 'react-router-dom';
 
 const Nav = () => {
 
      const [search, setSearch] = React.useState('')
+     const navigate = useNavigate()
 
+     const onSearch = (event) => {
+          navigate(`home/detail?name=${search.toLowerCase()}`);
+     }
 
      return (
           <div>
                <div>
-                    <input type="search" onChange={(event) => setSearch(event.target.value)}/>
-                    <Link to={`home/detail?name=${search.toLowerCase()}`} replace={true}>
-                         <button>Search</button>
-                    </Link>
+                    <input type="search" placeholder='Search Pokemon...' onChange={(event) => setSearch(event.target.value)} />
+                    <button onClick={onSearch}>Search</button>
                </div>
                <div>
                     <Link to='/home'>
@@ -24,7 +23,7 @@ const Nav = () => {
                </div>
                <div>
                     <Link to="/create">
-                                   <button>Crear un Pokemon</button>
+                                   <button>Create Your Pokemon!!</button>
                     </Link> 
                </div>
                <Outlet />

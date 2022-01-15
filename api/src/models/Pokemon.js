@@ -16,6 +16,10 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       alowNull: false
     },
+    img: {
+      type: DataTypes.STRING,
+      defaultValue: 'https://www.vectorkhazana.com/assets/images/products/Pokemon-Pikachu-Pokeball.jpg',
+    },
     life: {
       type: DataTypes.STRING
     },

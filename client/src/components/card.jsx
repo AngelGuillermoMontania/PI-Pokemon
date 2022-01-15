@@ -13,16 +13,17 @@ const Home = ({id, img, name, power, types}) => {
                         </div>
                         <div>
                               <div>
-                                    <h3>Type:</h3>
+                                    <h5>Type:</h5>
                                     {
                                     types.map(type => 
-                                        <h5 key={type.name}>{capitalize(type.name)}</h5>  
+                                        <p key={type.name}>{capitalize(type.name)}</p>  
                                     )
                                     }
                               </div>
                         </div>
                         <div>
-                              <p>Power: {power}</p>
+                              <h5>Power:</h5>
+                              <p>{power}</p>
                         </div>
                   </Link>
             </div>
