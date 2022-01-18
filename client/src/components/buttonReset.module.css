@@ -1,0 +1,24 @@
+.containButton {
+      display: flex;
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+}
+
+.containButton button {
+      border-radius: 4px;
+      background-image: url('../images/pokebolas_fondo.jpg');
+      background-position: center;
+      background-size: cover;
+      font-family: pokeSolid;
+      width: 22rem;
+      padding: 5px 10px 10px 10px;
+      color: var(--yellow);
+      letter-spacing: 2px;
+      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
+}
+
+.containButton button:hover {
+      box-shadow: 0px 0px 10px -2px white;
+      cursor: pointer;
+}

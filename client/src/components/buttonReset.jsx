@@ -1,4 +1,5 @@
 import React from 'react'
+import buttonReset from './buttonReset.module.css'
 
 const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
 
@@ -9,7 +10,9 @@ const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
       }
 
       return (
+            <div className={buttonReset.containButton}>
                   <button onClick={reset}>RESET FILTERS</button>
+            </div>
       )
 
 }

@@ -1,0 +1,101 @@
+.containCreate {
+      background-image: url('../images/home3.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: local;
+      padding-top: 4rem;
+      color: white;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+}
+
+.containCreate .form {
+      width: 80%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 27.5rem;
+      justify-content: space-evenly;
+}
+
+.containCreate .form label {
+      font-family: var(--staatliches);
+      color: var(--yellow);
+      font-size: 1.2rem;
+      text-shadow: 1px 0 0 var(--blue), -1px 0 0 var(--blue), 0 1px 0 var(--blue), 0 -1px 0 var(--blue), 0.5px 0.5px var(--blue), -0.5px -0.5px 0 var(--blue), 0.5px -0.5px 0 var(--blue), -0.5px 0.5px 0 var(--blue);
+}
+
+.containCreate .form .containInputs input {
+      opacity: 0.8;
+      transition-property: width;
+      transition-duration: 1s;
+      transition-delay: 0s;
+      width: 8rem;
+      margin: 0.2rem 0;
+}
+
+.containCreate .form .containInputs input:hover {
+      transition-property: width;
+      transition-duration: 1s;
+      transition-delay: 0s;
+      width: 10rem;
+}
+
+.containCreate .form input:focus{
+      outline: none;
+      opacity: 1;
+}
+
+.containCreate .form .containInputs {
+      display: flex;
+      flex-direction: column;
+}
+
+.containCreate .form .containInputs .inputs {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 30rem;
+}
+
+.containCreate .form .containTypes {
+      display: flex;
+      flex-direction: column;
+}
+
+.containCreate .form .containTypes h5{
+      font-family: var(--staatliches);
+      color: var(--yellow);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      text-shadow: 1px 0 0 var(--blue), -1px 0 0 var(--blue), 0 1px 0 var(--blue), 0 -1px 0 var(--blue), 0.5px 0.5px var(--blue), -0.5px -0.5px 0 var(--blue), 0.5px -0.5px 0 var(--blue), -0.5px 0.5px 0 var(--blue);
+}
+
+.containCreate .form .containTypes .types {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+}
+
+.containCreate .form .containTypes .types .type {
+      text-shadow: none;
+      margin: 0.2rem 0.4rem;
+}
+
+.containCreate .form .containTypes .types .type label {
+      text-shadow: 1px 0 0 black, -1px 0 0 black, 0 1px 0 black, 0 -1px 0 black, 0.5px 0.5px black, -0.5px -0.5px 0 black, 0.5px -0.5px 0 black, -0.5px 0.5px 0 black;
+}
+
+.containCreate .form .containTypes .types .type input {
+      text-shadow: none;
+}
+
+.containCreate .form .danger {
+      color: red;
+      font-family: var(--staatliches);
+      text-shadow: 1px 0 0 white, -1px 0 0 white, 0 1px 0 white, 0 -1px 0 white, 0.5px 0.5px white, -0.5px -0.5px 0 white, 0.5px -0.5px 0 white, -0.5px 0.5px 0 white;
+}

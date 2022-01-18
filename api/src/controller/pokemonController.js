@@ -41,7 +41,7 @@ module.exports = {
           } else {
 
                
-               /* .all 1x1 */
+               /* .all 2x20 */
                          /* let fullInfoApi = []
                          try {
                               const firstRequest = await axios.get(URL_GET);
@@ -65,7 +65,7 @@ module.exports = {
                
                
                /* .all x40 */
-                         /* try {
+                    /* try {
                               let pokemones = [];
                               do {
                                   let info = await axios.get(URL_GET);
@@ -106,7 +106,7 @@ module.exports = {
 
 
 
-                    /* .all 20x2 */
+                    /* .all 2x20 */
 
                let fullInfoApi = []
                let firstRequest
@@ -144,8 +144,7 @@ module.exports = {
                          })
                     })
                     .catch(error => res.send(error))
-     
-                    
+      
                await Pokemon.findAll({
                          include: {
                               model: Type,

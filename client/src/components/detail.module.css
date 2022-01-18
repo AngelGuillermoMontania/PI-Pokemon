@@ -1,0 +1,10 @@
+.containDetail {
+      padding-top: 5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('../images/home2.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: local;
+}

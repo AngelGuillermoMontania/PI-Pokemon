@@ -5,8 +5,9 @@ import { filterType, filterApiOrDb, filterAlphab, filterPower } from '../functio
 import Card from './card'
 import Loading from './loading'
 import ButtonPage from './buttonPage';
-import ButtonReset from './buttonResetFilter';
+import ButtonReset from './buttonReset';
 import { capitalize } from '../functions/extras';
+import home from './home.module.css'
 
 const Home = () => {
 
@@ -66,48 +67,51 @@ const Home = () => {
       }, [pokemonReact.pokemons, page])
            
       return (
-            <div>
-                  <div>
-                        <div>
-                              <label htmlFor="">Filter By Type</label>
-                              <select name="type" onChange={(event) => functionsFilters(event, filterType)}>
-                                    <option>-</option>
-                                    {
-                                          state.types.map(elem => <option value={elem} key={elem}>{capitalize(elem)}</option>)
-                                    }
-                              </select>
+            <div className={home.containHome}>
+                  <div className={home.containFilters}>
+                        <div className={home.containDivFilter}>
+                              <div className={home.filters}>
+                                    <label htmlFor="">Filter By Type: </label>
+                                    <select name="type" onChange={(event) => functionsFilters(event, filterType)}>
+                                          <option>-</option>
+                                          {
+                                                state.types.map(elem => <option value={elem} key={elem}>{capitalize(elem)}</option>)
+                                          }
+                                    </select>
+                              </div>
+                              <div className={home.filters}>
+                                    <label htmlFor="">Created Or Existing: </label>
+                                    <select name="apiOrDb" onChange={(event) => functionsFilters(event, filterApiOrDb)}>
+                                          <option>-</option>
+                                          <option value='api'>Existing</option>
+                                          <option value='db'>Created</option>
+                                    </select>
+                              </div>
                         </div>
-                        <div>
-                              <label htmlFor="">Created Or Existing</label>
-                              <select name="apiOrDb" onChange={(event) => functionsFilters(event, filterApiOrDb)}>
-                                    <option>-</option>
-                                    <option value='api'>Existing</option>
-                                    <option value='db'>Created</option>
-                              </select>
-                        </div>
-                        <div>
-                              <label htmlFor="">Order Alphabetically</label>
-                              <select name="Alphab" onChange={(event) => functionsFilters(event, filterAlphab)}>
-                                    <option>-</option>
-                                    <option value='A-Z'>Descendant</option>
-                                    <option value='Z-A'>Ascendant</option>
-                              </select>
-                        </div>
-                        <div>
-                              <label htmlFor="">Order By Atack</label>
-                              <select name="force" onChange={(event) => functionsFilters(event, filterPower)}>
-                                    <option>-</option>
-                                    <option value='Up'>Descendant</option>
-                                    <option value='Down'>Ascendant</option>
-                              </select>
+                        <div className={home.containDivFilter}>
+                              <div className={home.filters}>
+                                    <label htmlFor="">Order Alphabetically: </label>
+                                    <select name="Alphab" onChange={(event) => functionsFilters(event, filterAlphab)}>
+                                          <option>-</option>
+                                          <option value='A-Z'>Descendant</option>
+                                          <option value='Z-A'>Ascendant</option>
+                                    </select>
+                              </div>
+                              <div className={home.filters}>
+                                    <label htmlFor="">Order By Atack: </label>
+                                    <select name="force" onChange={(event) => functionsFilters(event, filterPower)}>
+                                          <option>-</option>
+                                          <option value='Up'>Descendant</option>
+                                          <option value='Down'>Ascendant</option>
+                                    </select>
+                              </div>
                         </div>
                   </div>
                   <ButtonReset setPokemonReact={setPokemonReact} state={state} setPage={setPage} renderCards={renderCards}/>
-                  <div>
-                        <ButtonPage pokemonReact={pokemonReact} page={page} setPage={setPage} />
+                  <div className={home.containCards}>
                         {
-                              loading && <Loading />
-                        }
+                              loading ? <Loading /> : <ButtonPage pokemonReact={pokemonReact} page={page} setPage={setPage} />
+                        } 
                         {
                               renderCards()
                         }

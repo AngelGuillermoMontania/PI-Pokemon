@@ -1,26 +1,27 @@
-import './App.css';
 import React from 'react';
 import { Routes, Route } from "react-router-dom";
 import Nav from './components/nav.jsx';
-import Initial from './components/initial.jsx';
 import Home from './components/home.jsx';
 import Detail from './components/detail.jsx'
 import Create from './components/create';
+import Landing from './components/landing';
+import PageNotFound from './components/notFound.jsx';
+var app = require('./App.css')
 
 
 function App() {
 
   return (
-    <div className="App">
-      
+    <div className={app.App}>
           <Nav />
           <div>
             <Routes>
-              <Route path='/' element={<Initial />} />
+              <Route path='/' element={<Landing />} />
               <Route path='home/detail/:id' element={ <Detail />} />
               <Route path='home/detail' element={<Detail />}/>
               <Route path='home' element={<Home />} />
               <Route path='create' element={<Create />} />
+              <Route path='*' element={<PageNotFound />} />
             </Routes>
           </div>
     </div>

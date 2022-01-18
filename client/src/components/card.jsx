@@ -1,31 +1,41 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { capitalize } from '../functions/extras';
+import card from './card.module.css'
 
 const Home = ({id, img, name, power, types}) => {
 
+      const navigate = useNavigate()
+
+      const handleClick = () => {
+            navigate(`detail/${id}`)
+      }
+
       return (
-            <div key={id}>
-                  <Link to={`detail/${id}`}>
-                        <div>
-                              <h1>{capitalize(name)}</h1>
-                              <img src={img} width={150} height={150} alt="Img not found" />
+            <div key={id} className={card.containCard} onClick={handleClick}>
+                  <div className={card.containName}>
+                        <p>{capitalize(name)}</p>
+                  </div>
+                  <div className={card.containDetail}>
+                        <div className={card.containImg}>
+                              <img src={img} alt="Img not found" />
                         </div>
-                        <div>
-                              <div>
-                                    <h5>Type:</h5>
+                        <div className={card.containStats}>
+                              <div className={card.stats}>
+                                    <h5><b>{`Power: `}</b></h5>
+                                    <p>{power}</p>
+                              </div>
+                              <div className={card.stats}>
+                                    <h5>Types: </h5>
                                     {
-                                    types.map(type => 
-                                        <p key={type.name}>{capitalize(type.name)}</p>  
-                                    )
+                                          types.map(type => 
+                                                <p key={type.name}>{capitalize(type.name)} <br /></p>  
+                                          )
                                     }
                               </div>
+                              
                         </div>
-                        <div>
-                              <h5>Power:</h5>
-                              <p>{power}</p>
-                        </div>
-                  </Link>
+                  </div>
             </div>
       )
 

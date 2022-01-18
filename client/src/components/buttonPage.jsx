@@ -1,4 +1,5 @@
 import React from 'react'
+import buttonPage from './buttonPage.module.css'
 
 const ButtonPage = ({pokemonReact, page, setPage}) => {
 
@@ -14,11 +15,13 @@ const ButtonPage = ({pokemonReact, page, setPage}) => {
             }
       }
 
-
      return (
-            <div>
-                  <button onClick={previous}>Previous</button>
-                  <button onClick={next}>Next</button>
+
+            <div className={buttonPage.containButtons}>
+                  <div className={buttonPage.buttons}>
+                  </div>
+                  <button onClick={previous} className={buttonPage.buttonImg}>← Previous Page</button>
+                  <button onClick={next}>Next Page →</button>
             </div>
      )
 

@@ -51,4 +51,3 @@ export const createPokemon = (pokemonCreate) => dispatch => {
           }))
 
 }
-

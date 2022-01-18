@@ -21,26 +21,32 @@ module.exports = (sequelize) => {
       defaultValue: 'https://www.vectorkhazana.com/assets/images/products/Pokemon-Pikachu-Pokeball.jpg',
     },
     life: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     },
     atack: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     },
     createInDB: {
       type: DataTypes.BOOLEAN,
       defaultValue: true
     },
     defense: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     },
     speed: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     },
     height: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     },
     weight: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      alowNull: false
     }
   },{
     timestamps: false,
@@ -48,27 +54,4 @@ module.exports = (sequelize) => {
     modelName: 'pokemon'
   })
 
-  /* Pokemon.addHook('beforeValidate', (pokemon, options) => {
-
-    pokemon.id > Number('10220');
-
-    for (let i = 10220; i > 10219; i++) {
-      fetch(`https://pokeapi.co/api/v2/pokemon/{i}`).catch(true)
-    }
-
-    for (let i = 10220; i > 10219; i++) {
-      try {
-        await fetch(`ht☺tps://pokeapi.co/api/v2/pokemon/{i}`)
-      } catch(error) {
-        return true
-      }
-    }
-
-    try {
-      await fetch('https://pokeapi.co/api/v2/pokemon/{id}');
-    } catch (error) {
-      return true
-    }
-    
-  }); */
 };

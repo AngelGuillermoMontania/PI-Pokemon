@@ -1,0 +1,20 @@
+.button {
+      width: 16rem;
+      height: 4rem;
+      background-color: rgba(0, 0, 0, 0.685);
+      background-position: center;
+      background-size: contain;
+      font-family: pokeSolid;
+      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--yellow);
+      font-size: 1.3rem;
+      padding-bottom: 0.5rem;
+      border-radius: 20px;
+      box-shadow: 0px 0px 10px -2px white;
+}
+
+.button:hover {
+      box-shadow: 0px 0px 10px 1px white;
+}
