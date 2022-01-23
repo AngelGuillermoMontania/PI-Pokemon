@@ -10,7 +10,7 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       validate: {
         isIn: {
-          args: [["normal","fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"]],
+          args: [["normal", "Henry", "fighting","flying","poison","ground","rock","bug","ghost","steel","fire","water","grass","electric","psychic","ice","dragon","dark","fairy","unknown","shadow"]],
           msg: 'No es un valor valido'
         },
       },

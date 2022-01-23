@@ -5,11 +5,14 @@ import { createPokemon, getTypes } from '../redux/actions';
 import { validate } from '../validators/validateCreateForm';
 import ButtonCreate from './buttonCreate';
 import create from './create.module.css';
+import { useNavigate } from 'react-router-dom';
 
 const Create = () => {
 
       const dispatch = useDispatch()
       const stateRedux = useSelector(state => state.types)
+      
+      const navigate = useNavigate()
 
       const [newPokemon, setNewPokemon] = React.useState({
             name: '',
@@ -28,8 +31,8 @@ const Create = () => {
       }, [dispatch])
 
       const onSubmit = (event) => {
+            event.preventDefault()
             if(Object.values(errors).length === 0) {
-                  dispatch(createPokemon(newPokemon));
                   let newInfo = event.currentTarget;
                   let div = document.createElement("div");
                   div.textContent = `Pokemon Created!!`;
@@ -38,10 +41,9 @@ const Create = () => {
                   div.style.fontFamily = 'Staatliches, cursive';
                   div.style.textShadow = '1px 0 0 var(--blue), -1px 0 0 var(--blue), 0 1px 0 var(--blue), 0 -1px 0 var(--blue), 0.5px 0.5px var(--blue), -0.5px -0.5px 0 var(--blue), 0.5px -0.5px 0 var(--blue), -0.5px 0.5px 0 var(--blue)'
                   newInfo.insertAdjacentElement('afterend', div);
-                  setTimeout(() => {
-                  }, 4000);
+                  dispatch(createPokemon(newPokemon));
+                  navigate('/home')
             } else {
-                  event.preventDefault()
                   let newInfo = event.currentTarget;
                   let div = document.createElement("div");
                   div.textContent = `Please read the errors and fill in the necessary fields`;

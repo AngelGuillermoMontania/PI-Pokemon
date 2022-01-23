@@ -44,10 +44,11 @@ export const getTypes = () => dispatch => {
 }
 
 export const createPokemon = (pokemonCreate) => dispatch => {
-      return axios.post(`http://localhost:3001/pokemons`, pokemonCreate).then(data => data.data)
-          .then(data => dispatch({
-                type: CREATE_POKEMON,
-                payload: data
-          }))
+      return axios.post(`http://localhost:3001/pokemons`, pokemonCreate)
+            .then(data => data.data)
+            .then(data => dispatch({
+                  type: CREATE_POKEMON,
+                  payload: data
+            }))
 
 }
