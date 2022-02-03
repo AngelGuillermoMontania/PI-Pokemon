@@ -8,6 +8,7 @@ import ButtonPage from './buttonPage';
 import ButtonReset from './buttonReset';
 import { capitalize } from '../functions/extras';
 import home from './home.module.css'
+import thunder from '../images/thunder.png'
 
 const Home = () => {
 
@@ -68,6 +69,7 @@ const Home = () => {
            
       return (
             <div className={home.containHome}>
+                  <img src={thunder} className={home.thunder} alt="" />
                   <div className={home.containFilters}>
                         <div className={home.containDivFilter}>
                               <div className={home.filters}>

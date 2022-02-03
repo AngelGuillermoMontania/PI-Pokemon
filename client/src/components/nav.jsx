@@ -1,7 +1,8 @@
 import React from 'react'
 import {Outlet, useNavigate} from 'react-router-dom';
 import nav from './nav.module.css'
-import lupa from '../images/lupa.png'
+import pokeButton from '../images/close-pokeball.png'
+import cielo from '../images/m_cielo.png'
 
 const Nav = () => {
 
@@ -15,23 +16,24 @@ const Nav = () => {
      }
 
      return (
-          <div className={nav.containHeader}>
-               <div className={nav.header}>
-                    <div className={nav.containSearch}>
-                         <input type="search" placeholder='Search Pokemon...' onChange={(event) => setSearch(event.target.value)} />
-                         <button onClick={handleClick} id='search'>
-                              Search 
-                              <img src={lupa} alt="" />
-                         </button>
-                    </div>
-                    <div className={nav.containHome}>
-                         <p onClick={handleClick} id='home'>Home</p> 
-                    </div>
-                    <div className={nav.containCreate}>
-                         <button onClick={handleClick} id='create'>Create Your Pokemon!!</button>
-                    </div>
-                    <Outlet />
+          <div className={nav.header}>
+               <img src={cielo} className={nav.cielo} alt="" />
+               <div className={nav.containSearch}>
+                    <input type="search" placeholder='Search Pokemon...' onChange={(event) => setSearch(event.target.value)} />
+                    <button onClick={handleClick} id='search'>
+                         <b>Search</b>
+                    </button>
                </div>
+               <div className={nav.containHome}>
+                    <p onClick={handleClick} id='home'>Home</p> 
+               </div>
+               <div className={nav.containCreate}>
+                    <button onClick={handleClick} id='create'>Create Your Pokemon!!
+                         <img src={pokeButton} className={nav.img1} alt="" />
+                         <img src={pokeButton} className={nav.img2} alt="" />
+                    </button>
+               </div>
+               <Outlet />
           </div>
      )
 

@@ -1,24 +1,39 @@
 .containButton {
       display: flex;
       justify-content: center;
-      margin-top: 1rem;
-      margin-bottom: 1.5rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
 }
 
 .containButton button {
-      border-radius: 4px;
-      background-image: url('../images/pokebolas_fondo.jpg');
+      position: relative;
+      z-index: 3;
+      border-radius: 30px;
+      background-color:white;
       background-position: center;
       background-size: cover;
       font-family: pokeSolid;
-      width: 22rem;
+      width: 15rem;
       padding: 5px 10px 10px 10px;
       color: var(--yellow);
-      letter-spacing: 2px;
-      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
+      letter-spacing: 4px;
+      color: var(--yellow);
+      text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
+      transition: transform, width, 1s;
 }
 
 .containButton button:hover {
+      width: 22rem;
       box-shadow: 0px 0px 10px -2px white;
       cursor: pointer;
+      transition: transform, width, 1s;
+}
+
+.containButton img {
+      position: absolute;
+      height: 45px;
+      width: 45px;
+      right: -15px;
+      bottom: -5px;
+      animation: gire linear 1s;
 }

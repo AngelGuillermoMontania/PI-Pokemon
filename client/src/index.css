@@ -357,6 +357,10 @@ template {
   font-family: pokeSolid;
   src: url('./fonts/PokemonSolid.ttf');
 }
+@font-face {
+  font-family: Go;
+  src: url('./fonts/bauhaus-heavy-outline-regular.ttf');
+}
 
 :root {
   --yellow: #FFE400;

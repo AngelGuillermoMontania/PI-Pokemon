@@ -1,5 +1,6 @@
 import React from 'react'
 import buttonReset from './buttonReset.module.css'
+import pokeButton from '../images/close-pokeball.png'
 
 const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
 
@@ -11,7 +12,9 @@ const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
 
       return (
             <div className={buttonReset.containButton}>
-                  <button onClick={reset}>RESET FILTERS</button>
+                  <button onClick={reset}>RESET FILTERS 
+                        <img src={pokeButton} alt="" />
+                  </button>
             </div>
       )
 

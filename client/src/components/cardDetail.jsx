@@ -37,11 +37,11 @@ const CardDetail = ({state}) => {
                                                 <p>{state.speed}</p>
                                           </div>
                                           <div>
-                                                <h5>Altura: </h5> 
+                                                <h5>Height: </h5> 
                                                 <p>{state.height}</p>
                                           </div>
                                           <div>
-                                                <h5>Peso: </h5>  
+                                                <h5>Weight: </h5>  
                                                 <p>{state.weight}</p>
                                           </div>
                                     </div>

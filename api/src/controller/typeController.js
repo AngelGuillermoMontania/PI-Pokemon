@@ -22,11 +22,22 @@ module.exports = {
           return res.send(typesApi)
      },
      getTypes: async (req, res) => {
+
+
+
+
+
           try {
                await axios.get(URL_TYPE)
                     .then(data => res.send(data.data.results.map(elem => elem.name)))
+                    
           } catch (error) {
                return res.send(error)
           }
+
+
+
+
+
      }
 }
