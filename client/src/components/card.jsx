@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom'
-import { capitalize } from '../functions/extras';
 import card from './card.module.css'
 
 const Home = ({id, img, name, power, types}) => {
@@ -14,7 +13,7 @@ const Home = ({id, img, name, power, types}) => {
       return (
             <div key={id} className={card.containCard} onClick={handleClick}>
                   <div className={card.containName}>
-                        <p>{capitalize(name)}</p>
+                        <p>{name}</p>
                   </div>
                   <div className={card.containDetail}>
                         <div className={card.containImg}>
@@ -29,7 +28,7 @@ const Home = ({id, img, name, power, types}) => {
                                     <h5>Types: </h5>
                                     {
                                           types.map(type => 
-                                                <p key={type.name}>{capitalize(type.name)} <br /></p>  
+                                                <p key={type.name}>{type.name} <br /></p>  
                                           )
                                     }
                               </div>

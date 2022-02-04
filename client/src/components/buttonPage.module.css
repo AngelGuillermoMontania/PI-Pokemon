@@ -2,41 +2,97 @@
       width: 100%;
       margin-top: 2rem;
       position: relative;
-      margin-left: 3rem;
+      display: flex;
+      justify-content: center;
 }
 
-.containButtons .buttons {
+.containButtons .containButton1 {
+      width: 50%;
+      display: flex;
+      justify-content: flex-end;
+}
+.containButtons .containButton2 {
+      width: 50%;
+}
+
+.containButtons .font {
       position: absolute;
-      border-radius: 20px;
-      height: 40rem;
-      width: 103%;
-      left: -4%;
+      border-radius: 100px;
+      height: 65rem;
+      width: 98%;
       top: -0.5rem;
-      background: rgb(255,255,255);
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0.13) 0%, rgba(255,255,255,0) 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.801) 0%, rgba(255, 255, 255, 0) 10%);
+      z-index: 2;
 }
 
 .containButtons button {
       margin-right: 0.3rem;
       width: 14rem;
       border-radius: 4px;
-      background-image: url('../images/pokebolas_fondo.jpg');
-      background-position: center;
-      background-size: cover;
+      background-color: whitesmoke;
       font-family: pokeSolid;
       padding: 5px 10px 10px 10px;
       color: var(--yellow);
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       z-index: 2;
       position: relative;
-      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
+      text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
       text-transform: uppercase;
+      transition: transform, width, 1s;
 }
 
 .containButtons button:hover {
-      box-shadow: 0px 0px 10px -2px white;
+      box-shadow: 0px 0px 10px 1px black;
+      width: 20rem;
+      transition: transform, width, 1s;
 }
 
-.containButtons .buttonImg {
-      background-image: url('../images/pokebolas_fondo_espej.jpg');
+
+
+.containButtons .poke1 {
+      position: absolute;
+      height: 40px;
+      width: 40px;
+      left: -13px;
+      bottom: -3px;
+      animation: gire linear 1s;
+}
+
+.containButtons button:hover .poke1 {
+      animation: gire1 infinite linear 2s;
+}
+@keyframes gire1 {
+      0%{
+            transform: rotate(0deg);
+      }
+      50%{
+            transform: rotate(-180deg);
+      }
+      100%{
+            transform: rotate(-359deg)
+      }
+}
+
+.containButtons .poke2 {
+      position: absolute;
+      height: 36px;
+      width: 36px;
+      right: -13px;
+      bottom: -2px;
+      animation: gire linear 1s;
+}
+
+.containButtons button:hover .poke2 {
+      animation: gire2 infinite linear 2s;
+}
+@keyframes gire2 {
+      0%{
+            transform: rotate(0deg);
+      }
+      50%{
+            transform: rotate(180deg);
+      }
+      100%{
+            transform: rotate(359deg)
+      }
 }

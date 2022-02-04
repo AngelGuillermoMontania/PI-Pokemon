@@ -108,7 +108,7 @@ module.exports = {
           }
      },
      create: async (req, res) => {
-          let { name, life, atack, defense, speed, weight, height, type} = req.body;
+          let { name, life, atack, defense, speed, weight, height, type, img} = req.body;
           try { 
                let pokemonCreate = await Pokemon.create({
                     name: name.toLowerCase(),
@@ -117,7 +117,8 @@ module.exports = {
                     defense,
                     speed,
                     height,
-                    weight
+                    weight,
+                    img
                });
                let types = await Type.findAll({
                     where: {name: type}

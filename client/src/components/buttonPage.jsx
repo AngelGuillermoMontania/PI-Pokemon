@@ -1,5 +1,6 @@
 import React from 'react'
 import buttonPage from './buttonPage.module.css'
+import pokeButton from '../images/close-pokeball.png'
 
 const ButtonPage = ({pokemonReact, page, setPage}) => {
 
@@ -18,10 +19,20 @@ const ButtonPage = ({pokemonReact, page, setPage}) => {
      return (
 
             <div className={buttonPage.containButtons}>
-                  <div className={buttonPage.buttons}>
+                  <div className={buttonPage.font}>
                   </div>
-                  <button onClick={previous} className={buttonPage.buttonImg}>← Previous Page</button>
-                  <button onClick={next}>Next Page →</button>
+                  <div className={buttonPage.containButton1}>
+                        <button onClick={previous} className={buttonPage.buttonPrev}>
+                              <img className={buttonPage.poke1} src={pokeButton} alt="" />
+                              Previous Page
+                        </button>
+                  </div>
+                  <div className={buttonPage.containButton2}>
+                        <button onClick={next} className={buttonPage.buttonNext}>
+                              Next Page
+                              <img className={buttonPage.poke2} src={pokeButton} alt="" />
+                        </button>
+                  </div>
             </div>
      )
 

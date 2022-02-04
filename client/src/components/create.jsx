@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { capitalize } from '../functions/extras';
 import { createPokemon, getTypes } from '../redux/actions';
 import { validate } from '../validators/validateCreateForm';
 import ButtonCreate from './buttonCreate';
 import create from './create.module.css';
 import { useNavigate } from 'react-router-dom';
+import thunder from '../images/thunder.png'
+import imgPokemons from '../images/home3.jpg'
 
 const Create = () => {
 
@@ -22,6 +23,7 @@ const Create = () => {
             speed: '',
             weight: '',
             height: '',
+            img: '',
             type: []
       })
       const [errors, setErrors] = React.useState({})
@@ -92,20 +94,36 @@ const Create = () => {
 
       return (
             <div className={create.containCreate}>
+                  <div className={create.font}></div>
+                  <img src={thunder} className={create.thunder} alt="" />
+                  <img src={imgPokemons} className={create.imgPokemons} alt="" />
                   <form onSubmit={onSubmit} className={create.form}>
                         <div className={create.name}>
-                              <label htmlFor="name">Name:</label>
-                              <input 
-                                    type="text" 
-                                    id='name' 
-                                    value={newPokemon.name} 
-                                    name='name' 
-                                    onChange={handleSubmit} 
-                                    className={errors.name && create.danger}
-                              />
-                              {
-                                    errors.name && (<p className={create.danger}>{errors.name}</p>)
-                              }
+                              <div>
+                                    <label htmlFor="name">Name:</label>
+                                    <input 
+                                          type="text" 
+                                          id='name' 
+                                          value={newPokemon.name} 
+                                          name='name' 
+                                          onChange={handleSubmit} 
+                                          className={errors.name && create.danger}
+                                    />
+                                    {
+                                          errors.name && (<p className={create.danger}>{errors.name}</p>)
+                                    }
+                              </div>
+                              <div className={create.file}>
+                                    <label htmlFor="file">Image:</label>
+                                    <input 
+                                          type="text" 
+                                          id='img' 
+                                          value={newPokemon.img} 
+                                          name='img'
+                                          onChange={handleSubmit} 
+                                          className={errors.name && create.danger}
+                                    />
+                              </div>
                         </div>
                         <div className={create.containInputs}>
                               <div className={create.inputs}>
@@ -137,8 +155,6 @@ const Create = () => {
                                                 errors.defense && (<p className={create.danger}>{errors.defense}</p>)
                                           }
                                     </div>
-                              </div>
-                              <div className={create.inputs}>
                                     <div>
                                           <label htmlFor="height">Height:</label>
                                           <input 
@@ -167,10 +183,6 @@ const Create = () => {
                                                 errors.weight && (<p className={create.danger}>{errors.weight}</p>)
                                           }
                                     </div>
-                              </div>
-                        </div>
-                        <div className={create.containInputs}>
-                              <div className={create.inputs}>
                                     <div>
                                           <label htmlFor="life">Life:</label>
                                           <input 
@@ -207,7 +219,7 @@ const Create = () => {
                                     {
                                           stateRedux.map(elem => 
                                                 <div key={elem} className={create.type}>
-                                                      <label htmlFor={elem}>{capitalize(elem)}</label>
+                                                      <label htmlFor={elem}>{elem}</label>
                                                       <input 
                                                       type="checkbox" 
                                                       name="type" 

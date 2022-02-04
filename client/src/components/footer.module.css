@@ -1,0 +1,5 @@
+.grass {
+      position: fixed;
+      top: 23rem;
+      z-index: 9998;
+}

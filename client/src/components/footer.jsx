@@ -1,15 +1,12 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom';
 import footer from './footer.module.css';
-import grass from '../images/ce'
+import grass from '../images/grass.png'
 
 
 const Footer = () => {
 
       return (
-            <div className={footer.contain}>
-                  <img src={grass} alt="" />
-            </div>
+            <img className={footer.grass} src={grass} alt="" />
       )
 
 }

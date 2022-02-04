@@ -12,8 +12,9 @@ const ButtonReset = ({setPokemonReact, state, setPage, renderCards}) => {
 
       return (
             <div className={buttonReset.containButton}>
-                  <button onClick={reset}>RESET FILTERS 
-                        <img src={pokeButton} alt="" />
+                  <button onClick={reset}>RESET FILTERS
+                        <img className={buttonReset.poke1} src={pokeButton} alt="" />
+                        <img className={buttonReset.poke2} src={pokeButton} alt="" />
                   </button>
             </div>
       )

@@ -13,8 +13,11 @@
 }
 
 .containImg img {
-      height: 100%;
-      width: 100%;
+      position: fixed;
+      left: 7rem;
+      bottom: -2rem;
+      height: 16rem;
+      width: 16rem;
 }
 
 .containImg h1 {
@@ -22,7 +25,7 @@
       text-shadow: 3px 0px 0px var(--blue), 0px 3px 0px var(--blue), -3px 0px 0px var(--blue), 0px -3px 0px var(--blue);
       color: var(--yellow);
       letter-spacing: 4px;
-      margin: auto;
+      margin: 2rem auto;
 }
 
 .containImg h1::after{

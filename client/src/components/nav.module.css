@@ -43,6 +43,7 @@
 .header .containCreate button {
       position: relative;
       font-family: pokeSolid;
+      background-color: whitesmoke;
       color: var(--yellow);
       letter-spacing: 2px;
       text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
@@ -57,7 +58,7 @@
 }
 
 .header .containCreate button:hover {
-      box-shadow: 0px 0px 5px 0px black;
+      box-shadow: 0px 0px 5px 1px black;
       cursor: pointer;
       transition-property: font-size;
       transition-duration: 1s;

@@ -1,5 +1,4 @@
 import React from 'react'
-import { capitalize } from '../functions/extras';
 import cardDetail from './cardDetail.module.css'
 
 const CardDetail = ({state}) => {
@@ -7,7 +6,7 @@ const CardDetail = ({state}) => {
       return (
       <div className={cardDetail.containDetails}>          
             <div className={cardDetail.containName}>
-                  <h1>{state.name ? capitalize(state.name) : state}</h1>
+                  <h1>{state.name ? state.name : state}</h1>
             </div>
             <div className={cardDetail.containStatsGeneral}>
                   <div className={cardDetail.containImg}>
@@ -51,7 +50,7 @@ const CardDetail = ({state}) => {
                                     <div className={cardDetail.types}>
                                           {
                                                 !state.types ? '' : state.types.map(type => 
-                                                      <p key={type.name}>{capitalize(type.name)}</p>  
+                                                      <p key={type.name}>{type.name}</p>  
                                                       )
                                           }
                                     </div>

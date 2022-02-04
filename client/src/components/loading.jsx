@@ -7,8 +7,8 @@ const Loading = () => {
 
       return (
             <div className={loading.containImg}>
-                  <img src={pikachuLoad} alt="" />
                   <h1>Loading</h1>
+                  <img src={pikachuLoad} alt="" />
             </div>
       )
 

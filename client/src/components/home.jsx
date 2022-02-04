@@ -6,9 +6,10 @@ import Card from './card'
 import Loading from './loading'
 import ButtonPage from './buttonPage';
 import ButtonReset from './buttonReset';
-import { capitalize } from '../functions/extras';
+import Footer from './footer';
 import home from './home.module.css'
 import thunder from '../images/thunder.png'
+import imgPokemons from '../images/home1.jpg'
 
 const Home = () => {
 
@@ -70,6 +71,7 @@ const Home = () => {
       return (
             <div className={home.containHome}>
                   <img src={thunder} className={home.thunder} alt="" />
+                  <img src={imgPokemons} className={home.imgPokemons} alt="" />
                   <div className={home.containFilters}>
                         <div className={home.containDivFilter}>
                               <div className={home.filters}>
@@ -77,7 +79,7 @@ const Home = () => {
                                     <select name="type" onChange={(event) => functionsFilters(event, filterType)}>
                                           <option>-</option>
                                           {
-                                                state.types.map(elem => <option value={elem} key={elem}>{capitalize(elem)}</option>)
+                                                state.types.map(elem => <option value={elem} key={elem}>{elem}</option>)
                                           }
                                     </select>
                               </div>
@@ -118,6 +120,7 @@ const Home = () => {
                               renderCards()
                         }
                   </div>
+                  <Footer />
             </div>
       )
 
