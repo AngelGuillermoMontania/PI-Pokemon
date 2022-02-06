@@ -1,18 +1,17 @@
 .containDetails {
-      width: 90%;
-      background: rgb(0, 0, 0);
-      background: linear-gradient(90deg, rgba(255, 255, 255, 0.37) 0%, rgba(0, 0, 0, 0.452) 50%);
-      color: white;
+      margin-top: 2rem;
+      width: 95%;
       height: 26rem;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
+      justify-content: space-around;
       align-items: center;
-      border-radius: 20px;
-      margin-bottom: 1rem;
+      z-index: 2;
 }
 
 h5, p {
       margin: auto;
+      text-transform: capitalize;
 }
 
 .containDetails .containName {
@@ -29,35 +28,36 @@ h5, p {
       margin: auto;
       font-family: pokeSolid;
       color: var(--yellow);
-      letter-spacing: 2px;
-      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
-      font-size: 2.8rem;
-      text-rendering: optimizeLegibility;
+      letter-spacing: 4px;
+      text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
+      font-size: 3.5rem;
+      text-transform: capitalize;
 }
 
 .containDetails .containStatsGeneral {
-      width: 100%;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
 }
 
-.containDetails .containStatsGeneral .containImg {
-      width: 15rem;
-      height: 15rem;
-      background-color: black;
+.containDetails .containImg {
+      width: 40%;
+      height: 22rem;
+      margin-top: 5rem;
+      background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 17%, rgba(255,255,255,1) 74%, rgba(0,0,0,1) 100%);
       border: var(--yellow) 3px double;
-      animation: img 3s linear;
+      animation: img 7s ease-out;
       position: relative;
+      display: block;
 }
 
 @keyframes img {
-      0% { left: -20rem;}
-      100% {left: 0;}
+      0% { top: -50rem;}
+      100% {top: 0;}
 }
 
-.containDetails .containStatsGeneral .containImg img {
+.containDetails .containImg img {
       width: 100%;
       height: 100%;
 }
@@ -67,32 +67,44 @@ h5, p {
       flex-direction: column;
       align-items: center;
       font-family: var(--staatliches);
-      
-      animation: stats 3s;
       position: relative;
 }
 
-@keyframes stats {
-      0% { left: 50rem;}
-      100% {left: 0;}
-}
 
 .containDetails .containStatsGeneral .containStats h2 {
       margin-top: 3rem;
       color: yellow;
       text-shadow: 2px 0 0 var(--blue), -2px 0 0 var(--blue), 0 2px 0 var(--blue), 0 -2px 0 var(--blue), 1px 1px var(--blue), -1px -1px 0 var(--blue), 1px -1px 0 var(--blue), -1px 1px 0 var(--blue);
+      animation: h2 5s ease-out;
+      position: relative;
+}
+@keyframes h2 {
+      0% { left: -50rem;}
+      100% {left: 0;}
 }
 
 .containDetails .containStatsGeneral .containStats h5 {
-      font-size: 1.1rem;
+      font-size: 1.3rem;
       color: yellow;
       text-shadow: 2px 0 0 var(--blue), -2px 0 0 var(--blue), 0 2px 0 var(--blue), 0 -2px 0 var(--blue), 1px 1px var(--blue), -1px -1px 0 var(--blue), 1px -1px 0 var(--blue), -1px 1px 0 var(--blue);
+      position: relative;
+      animation: h5 3s ease-out;
+}
+@keyframes h5 {
+      0% { left: 80rem;}
+      100% {left: 0;}
 }
 
 .containDetails .containStatsGeneral .containStats p {
       margin: 0.2rem 0;
       color: yellow;
       text-shadow: 2px 0 0 var(--blue), -2px 0 0 var(--blue), 0 2px 0 var(--blue), 0 -2px 0 var(--blue), 1px 1px var(--blue), -1px -1px 0 var(--blue), 1px -1px 0 var(--blue), -1px 1px 0 var(--blue);
+      animation: p 6s ease-out;
+      position: relative;
+}
+@keyframes p {
+      0% { left: -80rem;}
+      100% {left: 0;}
 }
 
 .containDetails .containStatsGeneral .containStats .containDetail {

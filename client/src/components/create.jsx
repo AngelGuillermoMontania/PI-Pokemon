@@ -6,7 +6,7 @@ import ButtonCreate from './buttonCreate';
 import create from './create.module.css';
 import { useNavigate } from 'react-router-dom';
 import thunder from '../images/thunder.png'
-import imgPokemons from '../images/home3.jpg'
+import imgPokemons from '../images/home4.jpg'
 
 const Create = () => {
 
@@ -23,7 +23,6 @@ const Create = () => {
             speed: '',
             weight: '',
             height: '',
-            img: '',
             type: []
       })
       const [errors, setErrors] = React.useState({})
@@ -70,26 +69,28 @@ const Create = () => {
 
       const selectType = (event) => {
             if(event.currentTarget.checked) {
+                  console.log('agrega nuevo tipo y no larga errores')
                   let newType = [event.target.value]
                   setNewPokemon({
                         ...newPokemon,
                         type: [...newPokemon.type, ...newType]
                   })
+                  setErrors(validate({
+                        ...newPokemon,
+                        type: [...newPokemon.type, ...newType]
+                  }))
             } else {
+                  console.log('quita un tipo y si esta vacio muestra errores')
                   setNewPokemon({
                         ...newPokemon,
                         type: newPokemon.type.filter(elem => elem !== event.target.value)
                   })
-                  
+                  setErrors(validate({
+                        ...newPokemon,
+                        type: newPokemon.type.filter(elem => elem !== event.target.value)
+                  }))
+                  console.log(newPokemon.type)
             };
-            if(newPokemon.type.length === 0) {
-                  setErrors({
-                        ...errors,
-                        type: '1 type min'
-                  })
-            } else {
-                  setErrors({})
-            }
       }
 
       return (

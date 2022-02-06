@@ -5,12 +5,9 @@ const CardDetail = ({state}) => {
 
       return (
       <div className={cardDetail.containDetails}>          
-            <div className={cardDetail.containName}>
-                  <h1>{state.name ? state.name : state}</h1>
-            </div>
             <div className={cardDetail.containStatsGeneral}>
-                  <div className={cardDetail.containImg}>
-                        <img src={state.img} height={150} width={150} alt="img not found" />
+                  <div className={cardDetail.containName}>
+                        <h1>{state.name ? state.name : state}</h1>
                   </div>
                   <div className={cardDetail.containStats}>
                         <h2>Statistics:</h2>
@@ -62,6 +59,12 @@ const CardDetail = ({state}) => {
                         </div>
                   </div>
             </div>
+            <div className={cardDetail.containImg}>
+                  <img src={state.img} height={150} width={150} alt="img not found" />
+            </div>
+            {
+               
+            }
       </div>      
       )
 

@@ -65,6 +65,7 @@ const Home = () => {
                               types={elem.types}
                               power={elem.atack}
                               key={elem.id}
+                              createInDB={elem.createInDB}
                               />)
       }, [pokemonReact.pokemons, page])
            

@@ -5,6 +5,8 @@ import { useParams, useLocation } from 'react-router-dom';
 import Loading from './loading';
 import CardDetail from './cardDetail';
 import detail from './detail.module.css'
+import imgPokemons from '../images/home2.jpg'
+import thunder from '../images/thunder.png'
 
 function useQuery() {
       return new URLSearchParams(useLocation().search)
@@ -32,8 +34,10 @@ const Detail = () => {
      
       return ( 
             <div className={detail.containDetail}>
+                  <img src={thunder} className={detail.thunder} alt="" />
+                  <img src={imgPokemons} className={detail.font} alt="" />
                   {
-                        typeof(state) === 'string' && <div>
+                        typeof(state) === 'string' && <div className={detail.error}>
                                     <h1>"The searched pokemon does not exist. Search exact with full name"</h1>
                               </div>
                   }

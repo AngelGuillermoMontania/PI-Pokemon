@@ -40,5 +40,9 @@ export function validate (input) {
       } else if(!/^([1-9][0-9]{0,2}|1000)$/i.test(input.speed)) {
         errors.speed = 'Speed is invalid (0-1000)'
       };
+      if(input.type.length === 0) {
+        console.log('Entre aca no se por que');
+        errors.type = 'Minimun 1 type is required'
+      }
       return errors
   }

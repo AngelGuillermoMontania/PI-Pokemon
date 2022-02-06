@@ -1,10 +1,28 @@
 .containDetail {
-      padding-top: 5rem;
+      background-color: black;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-image: url('../images/home2.jpg');
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: local;
+      height: 100vh;
+}
+
+.containDetail .font{
+      position: absolute;
+      z-index: 1;
+      width: 100%;
+      height: 30.2rem;
+      top: 3.5rem;
+}
+
+.containDetail .thunder {
+      z-index: 2;
+      width: 100%;
+      height: 30rem;
+      position: absolute;
+      top: -17rem;
+}
+
+.containDetail .error {
+      color: white;
+      font-size: 2.5rem;
 }

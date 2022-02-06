@@ -14,6 +14,7 @@
       background-color:whitesmoke;
       font-family: pokeSolid;
       width: 15rem;
+      height: 2rem;
       padding: 5px 10px 10px 10px;
       color: var(--yellow);
       letter-spacing: 4px;
@@ -31,10 +32,10 @@
 
 .containButton .poke1 {
       position: absolute;
-      height: 36px;
-      width: 36px;
+      height: 37px;
+      width: 37px;
       left: -13px;
-      bottom: -2px;
+      bottom: -4px;
       animation: gire linear 1s;
 }
 
@@ -55,10 +56,10 @@
 
 .containButton .poke2 {
       position: absolute;
-      height: 36px;
-      width: 36px;
+      height: 37px;
+      width: 37px;
       right: -13px;
-      bottom: -2px;
+      bottom: -4px;
       animation: gire linear 1s;
 }
 

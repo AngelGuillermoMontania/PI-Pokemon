@@ -124,9 +124,28 @@ module.exports = {
                     where: {name: type}
                });
                pokemonCreate.addType(types);
-               res.send('success') 
+               res.send('success')
           } catch (error) {
                res.send(error.message)
           }
      },
+     delete: async (req, res) => {
+          let namePoke = req.query.name
+          try {
+               let pokemonSearch = await Pokemon.findOne({
+                    where: {
+                         name: namePoke
+                    }
+               })
+               pokemonSearch.removeTypes(await pokemonSearch.getTypes());
+               await Pokemon.destroy({
+                    where: {
+                         name: namePoke
+                    }
+               })
+               res.send('success')
+          } catch (error) {
+               console.log(error.message)
+          }
+     }
 }

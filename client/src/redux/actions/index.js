@@ -5,6 +5,7 @@ export const GET_POKEMONS_NAME = 'GET_POKEMONS_NAME'
 export const CREATE_POKEMON = 'CREATE_POKEMON';
 export const GET_TYPES = 'GET_TYPES';
 export const SET_LOADING = 'SET_LOADING'
+export const DEL_POKEMON = 'DEL_POKEMON'
 
 export const getPokemons = () => dispatch => {
       return axios('http://localhost:3001/pokemons')
@@ -49,6 +50,15 @@ export const createPokemon = (pokemonCreate) => dispatch => {
             .then(data => dispatch({
                   type: CREATE_POKEMON,
                   payload: data
+            }))
+
+}
+
+export const deletePoke = (name) => dispatch => {
+      return axios.delete(`http://localhost:3001/pokemons/delete/?name=${name}`)
+            .then(data => data.data)
+            .then(data => dispatch({
+                  type: CREATE_POKEMON,
             }))
 
 }
