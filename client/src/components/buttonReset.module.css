@@ -1,79 +1,77 @@
 .containButton {
-      display: flex;
-      justify-content: center;
-      margin-top: 0.5rem;
-      margin-bottom: 0.5rem;
-
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
 }
 
 .containButton button {
-      position: relative;
-      z-index: 2;
-      border-radius: 30px;
-      border: 1px solid var(--blue);
-      background-color:whitesmoke;
-      font-family: pokeSolid;
-      width: 15rem;
-      height: 2rem;
-      padding: 5px 10px 10px 10px;
-      color: var(--yellow);
-      letter-spacing: 4px;
-      font-size: 0.8rem;
-      text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
-      transition: transform, width, 1s;
+    position: relative;
+    z-index: 2;
+    border-radius: 30px;
+    border: 1px solid var(--blue);
+    background-color:whitesmoke;
+    font-family: pokeSolid;
+    width: 15rem;
+    height: 2rem;
+    padding: 5px 10px 10px 10px;
+    color: var(--yellow);
+    letter-spacing: 4px;
+    font-size: 0.8rem;
+    text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
+    transition: transform, width, 1s;
 }
 
 .containButton button:hover {
-      width: 22rem;
-      box-shadow: 0px 0px 10px 0px white;
-      cursor: pointer;
-      transition: transform, width, 1s;
+    width: 22rem;
+    box-shadow: 0px 0px 10px 0px white;
+    cursor: pointer;
+    transition: transform, width, 1s;
 }
 
 .containButton .poke1 {
-      position: absolute;
-      height: 37px;
-      width: 37px;
-      left: -13px;
-      bottom: -4px;
-      animation: gire linear 1s;
+    position: absolute;
+    height: 37px;
+    width: 37px;
+    left: -13px;
+    bottom: -4px;
 }
 
 .containButton button:hover .poke1 {
-      animation: gire1 infinite linear 2s;
+    animation: gire1 infinite linear 2s;
 }
 @keyframes gire1 {
-      0%{
-            transform: rotate(0deg);
-      }
-      50%{
-            transform: rotate(-180deg);
-      }
-      100%{
-            transform: rotate(-359deg)
-      }
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-180deg);
+    }
+    100%{
+        transform: rotate(-359deg)
+    }
 }
 
 .containButton .poke2 {
-      position: absolute;
-      height: 37px;
-      width: 37px;
-      right: -13px;
-      bottom: -4px;
-      animation: gire linear 1s;
+    position: absolute;
+    height: 37px;
+    width: 37px;
+    right: -13px;
+    bottom: -4px;
+    animation: gire linear 1s;
 }
 
 .containButton button:hover .poke2 {
-      animation: gire2 infinite linear 2s;
+    animation: gire2 infinite linear 2s;
 }
 @keyframes gire2 {
-      0%{
-            transform: rotate(0deg);
-      }
-      50%{
-            transform: rotate(180deg);
-      }
-      100%{
-            transform: rotate(359deg)
-      }
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: rotate(359deg)
+    }
 }

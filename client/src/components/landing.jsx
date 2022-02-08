@@ -1,22 +1,23 @@
-import React from 'react'
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import landing from './landing.module.css'
+import landing from './landing.module.css';
 
 
 const Landing = () => {
 
-      const navigate = useNavigate()
+    const navigate = useNavigate();
+    
+    const handleClick = () => {
+        navigate('/home')
+    };
 
-      const handleClick = () => {
-            navigate('/home')
-      }
-
-      return (
-            <div className={landing.contain}>
-                  <button onClick={handleClick}>Gotta catch <br /> ´em all!</button>
+    return (
+        <div className={landing.contain}>
+            <div className={landing.containButton}>
+                <button onClick={handleClick}> Gotta catch <br /> ´em all! </button>
             </div>
-      )
-
-}
+        </div>
+    )
+};
 
 export default Landing;

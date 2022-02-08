@@ -1,16 +1,15 @@
-import React from 'react'
+import React from 'react';
 import buttonModify from './buttonModify.module.css';
-import pokeButton from '../images/close-pokeball.png'
+import pokeButton from '../images/close-pokeball.png';
 
-const ButtonCreate = () => {
+const ButtonModify = () => {
+    return (
+        <button type="submit" className={buttonModify.button}>
+           <img className={buttonModify.poke1} src={pokeButton} alt="Img not found" />
+           <b>Modify!!</b>
+           <img className={buttonModify.poke2} src={pokeButton} alt="Img not found" />
+        </button>
+    )
+};
 
-     return (
-            <button type="submit" className={buttonModify.button}>
-               <img className={buttonModify.poke} src={pokeButton} alt="" />
-               <b>Create!!</b>
-            </button>
-     )
-
-}
-
-export default ButtonCreate;
+export default ButtonModify;

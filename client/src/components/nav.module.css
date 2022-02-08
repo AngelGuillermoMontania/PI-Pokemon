@@ -1,167 +1,169 @@
 .header {
-      position: relative;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      width: 100vw;
-      border: none;
-      font-family: pokeSolid;
-      z-index: 3;
-      position: fixed;
-      height: 4rem;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    border: none;
+    font-family: pokeSolid;
+    z-index: 3;
+    position: fixed;
+    height: 4rem;
 }
 
 .header .cielo {
-      position: absolute;
-      height: 7rem;
-      width: 101vw;
-      top: 0rem;
-      z-index: 2;
+    position: absolute;
+    height: 7rem;
+    width: 101vw;
+    top: 0rem;
+    z-index: 2;
 }
 
 .header .containHome p {
-      position: relative;
-      text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
-      color: var(--yellow);
-      letter-spacing: 2px;
-      font-size: 1.7rem;
-      transition-property: font-size;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      padding-bottom: 0.5rem;
-      z-index: 3;
+    position: relative;
+    text-shadow: 2px 0px 0px var(--blue), 0px 2px 0px var(--blue), -2px 0px 0px var(--blue), 0px -2px 0px var(--blue);
+    color: var(--yellow);
+    letter-spacing: 2px;
+    font-size: 1.7rem;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    padding-bottom: 0.5rem;
+    z-index: 3;
 }
 
 .header .containHome p:hover {
-      transition-property: font-size;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      font-size: 2.1rem;
-      cursor: pointer;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    font-size: 2.1rem;
+    cursor: pointer;
 }
 
 .header .containCreate button {
-      position: relative;
-      font-family: pokeSolid;
-      background-color: whitesmoke;
-      color: var(--yellow);
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
-      padding: 3px 10px 8px 10px;
-      border-radius: 5px;
-      width: 16.5rem;
-      transition: transform, width, 1s;
-      border: 2px solid black;
-      height: 2rem;
-      padding-top: 2px;
-      z-index: 3;
+    position: relative;
+    font-family: pokeSolid;
+    background-color: whitesmoke;
+    color: var(--yellow);
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0 var(--blue), 2px -2px 0 var(--blue), -2px 2px 0 var(--blue), -2px -2px 0 var(--blue), 2px 0px 0 var(--blue), 0px 2px 0 var(--blue), -2px 0px 0 var(--blue), 0px -2px 0 var(--blue);
+    padding: 3px 10px 8px 10px;
+    border-radius: 5px;
+    width: 16.5rem;
+    transition: transform, width, 1s;
+    border: 2px solid black;
+    height: 2rem;
+    padding-top: 2px;
+    z-index: 3;
 }
 
 .header .containCreate button:hover {
-      box-shadow: 0px 0px 5px 1px black;
-      cursor: pointer;
-      transition-property: font-size;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      width: 20rem;
-      transition: transform, width, 1s;
+    box-shadow: 0px 0px 5px 1px black;
+    cursor: pointer;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    width: 20rem;
+    transition: transform, width, 1s;
 }
 
 .header .containCreate button .img1 {
-      position: absolute;
-      height: 36px;
-      width: 36px;
-      left: -1.5rem;
-      bottom: -4px;
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    left: -1.5rem;
+    bottom: -4px;
 }
 
 .header .containCreate button:hover .img1 {
-      animation: gire1 infinite linear 2s;
+    animation: gire1 infinite linear 2s;
 }
+
 @keyframes gire1 {
-      0%{
-            transform: rotate(0deg);
-      }
-      50%{
-            transform: rotate(-180deg);
-      }
-      100%{
-            transform: rotate(-359deg)
-      }
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(-180deg);
+    }
+    100% {
+        transform: rotate(-359deg)
+    }
 }
 
 .header .containCreate button .img2 {
-      position: absolute;
-      height: 36px;
-      width: 36px;
-      right: -1.5rem;
-      bottom: -4px;
+    position: absolute;
+    height: 36px;
+    width: 36px;
+    right: -1.5rem;
+    bottom: -4px;
 }
 
 .header .containCreate button:hover .img2 {
-      animation: gire2 infinite linear 2s;
+    animation: gire2 infinite linear 2s;
 }
+
 @keyframes gire2 {
-      0%{
-            transform: rotate(0deg);
-      }
-      50%{
-            transform: rotate(180deg);
-      }
-      100%{
-            transform: rotate(359deg)
-      }
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(359deg)
+    }
 }
 
 .header .containSearch {
-      position: relative;
-      transition-property: font-size;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      z-index: 9999;
+    position: relative;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    z-index: 9999;
 }
 
 .header .containSearch:hover {
-      transition-property: font-size;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      font-size: 1.1rem;
+    transition-property: font-size;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    font-size: 1.1rem;
 }
 
 .header .containSearch input {
-      width: 10.3rem;
-      border-radius: 7px 0 0 7px;
-      border: inset;
-      font-family: var(--staatliches);
-      padding: 3px 0 3px 0;
-      opacity: 0.5;
-      transition-property: width;
-      transition-duration: 1s;
-      transition-delay: 0s;
+    width: 10.3rem;
+    border-radius: 7px 0 0 7px;
+    border: inset;
+    font-family: var(--staatliches);
+    padding: 3px 0 3px 0;
+    opacity: 0.5;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-delay: 0s;
 }
 
 .header .containSearch input:hover {
-      transition-property: width;
-      transition-duration: 1s;
-      transition-delay: 0s;
-      width: 11.5rem;
+    transition-property: width;
+    transition-duration: 1s;
+    transition-delay: 0s;
+    width: 11.5rem;
 }
 
-.header .containSearch input:focus{
-      outline: none;
-      opacity: 1;
+.header .containSearch input:focus {
+    outline: none;
+    opacity: 1;
 }
 
 .header .containSearch button {
-      border-radius: 3px 10px 10px 3px;
-      border: outset black;
-      padding: 3px 2px 3px 2px;
-      font-family: var(--staatliches);
-      background-color: white;
-      color: var(--blue);
+    border-radius: 3px 10px 10px 3px;
+    border: outset black;
+    padding: 3px 2px 3px 2px;
+    font-family: var(--staatliches);
+    background-color: white;
+    color: var(--blue);
 }
 
 .header .containSearch button:hover {
-      box-shadow: 0px 0px 5px 0px black;
-      cursor: pointer;
+    box-shadow: 0px 0px 5px 0px black;
+    cursor: pointer;
 }

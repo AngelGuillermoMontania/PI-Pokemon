@@ -1,6 +1,5 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const pokemonRouter = require('./routes/pokemonRouter.js');
 const typeRouter = require('./routes/typeRouter.js');
@@ -23,11 +22,11 @@ server.use((req, res, next) => {
   next();
 });
 
-server.use('/pokemons', pokemonRouter)
-server.use('/types', typeRouter)
+server.use('/pokemons', pokemonRouter);
+server.use('/types', typeRouter);
 
 // Error catching endware.
-server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
+server.use((err, req, res, next) => { 
   const status = err.status || 500;
   const message = err.message || err;
   console.error(err);
