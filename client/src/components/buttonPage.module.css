@@ -18,7 +18,8 @@
 .containButtons .font {
     position: absolute;
     border-radius: 100px;
-    height: 65rem;
+    min-height: 41rem;
+    height: auto;
     width: 98%;
     top: -0.5rem;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.801) 0%, rgba(255, 255, 255, 0) 10%);
